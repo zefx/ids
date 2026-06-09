@@ -10,9 +10,9 @@ traffic capture from any network interface.
 | Service  | Image                                     | Version                       | Description                              |
 | -------- | ----------------------------------------- | ----------------------------- | ---------------------------------------- |
 | kafka    | `apache/kafka:latest`                     | KRaft mode                    | Message broker, no Zookeeper             |
-| zeek     | `ghcr.io/zefx/hse-thesis-zeek:latest`     | Zeek 7.0.4, zeek-kafka v1.2.0 | Packet capture → JSON conn.log → Kafka |
+| zeek     | `ghcr.io/zefx/hse-thesis-zeek:latest`     | Zeek 7.0.4, zeek-kafka v1.2.0 | Packet capture -> JSON conn.log -> Kafka |
 | consumer | `ghcr.io/zefx/hse-thesis-consumer:latest` | Spark 4.1.1, XGBoost          | ML classification + rule-based detection |
-| kafka-ui | `provectuslabs/kafka-ui:latest`           | —                            | Web UI for debugging (optional)          |
+| kafka-ui | `provectuslabs/kafka-ui:latest`           | ->                            | Web UI for debugging (optional)          |
 
 ## Prerequisites
 
