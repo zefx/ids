@@ -1,0 +1,64 @@
+{
+  "model": "XGBoost",
+  "n_estimators": 200,
+  "best_iteration": 197,
+  "train_time_s": 851.2,
+  "weighted_f1": 0.994585,
+  "macro_f1": 0.861312,
+  "per_class": {
+    "BENIGN": {
+      "precision": 1.0,
+      "recall": 0.9959,
+      "f1": 0.998,
+      "support": 5491988
+    },
+    "Bot": {
+      "precision": 0.336,
+      "recall": 0.9999,
+      "f1": 0.503,
+      "support": 9601
+    },
+    "DDOS-HOIC": {
+      "precision": 0.9924,
+      "recall": 1.0,
+      "f1": 0.9962,
+      "support": 214882
+    },
+    "DoS-GoldenEye": {
+      "precision": 0.8952,
+      "recall": 0.9944,
+      "f1": 0.9422,
+      "support": 5732
+    },
+    "DoS-Hulk": {
+      "precision": 1.0,
+      "recall": 0.9997,
+      "f1": 0.9999,
+      "support": 360737
+    },
+    "DoS-SlowHTTPTest": {
+      "precision": 0.6759,
+      "recall": 0.5311,
+      "f1": 0.5948,
+      "support": 21110
+    },
+    "DoS-Slowloris": {
+      "precision": 0.8523,
+      "recall": 1.0,
+      "f1": 0.9202,
+      "support": 1396
+    },
+    "FTP-BruteForce": {
+      "precision": 0.7583,
+      "recall": 0.8609,
+      "f1": 0.8064,
+      "support": 38060
+    },
+    "SSH-Bruteforce": {
+      "precision": 0.983,
+      "recall": 0.9996,
+      "f1": 0.9912,
+      "support": 18530
+    }
+  }
+}

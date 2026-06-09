@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="manual">
+  <diagram name="Lab-testbed" id="testbed-1">
+    <mxGraphModel dx="1030" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="780" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MGMT_NET" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;Management network&lt;/b&gt;&amp;nbsp;&amp;nbsp;192.168.88.0/24" vertex="1">
+          <mxGeometry height="35" width="710" x="40" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV01" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=top;spacingTop=8;arcSize=3;fontStyle=0" value="&lt;b&gt;usrv01&lt;/b&gt; · 192.168.88.200&lt;br&gt;&lt;span&gt;Ubuntu 22.04 · 64 GB RAM&lt;/span&gt;" vertex="1">
+          <mxGeometry height="325" width="220" x="60" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV01_ZEEK" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;Zeek 7.0.4&lt;/b&gt;&lt;br&gt;&lt;span&gt;capture / labeling&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="180" x="80" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV01_KAFKA" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=light-dark(#E6E6E6,#DBDBDB);" value="&lt;b&gt;Apache Kafka (KRaft)&lt;/b&gt;&lt;br&gt;&lt;span&gt;topic: zeek-conn&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="180" x="80" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="VICTIM_VM" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=4 4;fontStyle=0" value="&lt;b&gt;victim VM&lt;/b&gt;&lt;br&gt;10.0.1.20 · Ubuntu 22.04&lt;br&gt;&lt;span&gt;nginx (:80), ssh (:22), vsftpd (:21)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="65" width="180" x="80" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV01_NIC" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;enp2s0&lt;/b&gt;&lt;br&gt;&lt;span&gt;10.0.1.1/24 (br0)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="140" x="100" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV02" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=top;spacingTop=8;arcSize=3;fontStyle=0" value="&lt;b&gt;usrv02&lt;/b&gt; · 192.168.88.201&lt;br&gt;&lt;span&gt;Ubuntu 22.04 · 64 GB RAM&lt;/span&gt;" vertex="1">
+          <mxGeometry height="325" width="220" x="310" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV02_SPARK" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;Spark Streaming&lt;/b&gt;&lt;br&gt;&lt;span&gt;Docker: XGBoost + Rule engine&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="180" x="330" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ATTACKER_VM" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=4 4;fontStyle=0" value="&lt;b&gt;attacker VM&lt;/b&gt;&lt;br&gt;10.0.1.10 · Kali 2026.1&lt;br&gt;&lt;span&gt;hping3, hydra, GoldenEye,&lt;/span&gt;&lt;br&gt;&lt;span&gt;hulk_py2, slowloris, slowhttptest&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="330" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="USRV02_NIC" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;enp2s0&lt;/b&gt;&lt;br&gt;&lt;span&gt;10.0.1.2/24 (br0)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="140" x="350" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="NAS" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;fontStyle=0" value="&lt;b&gt;NAS Synology&lt;/b&gt;&lt;br&gt;192.168.88.2&lt;br&gt;&lt;br&gt;&lt;b&gt;CICIDS2018 PCAP&lt;/b&gt;&lt;br&gt;&lt;span&gt;400+ GB&lt;/span&gt;" vertex="1">
+          <mxGeometry height="160" width="170" x="570" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="BR0_NET" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;fontStyle=0;fillColor=#E6E6E6;" value="&lt;b&gt;Direct link (1 Gbit) — bridge br0&lt;/b&gt;&amp;nbsp;&amp;nbsp;10.0.1.0/24&lt;br&gt;&lt;span&gt;Attack and monitoring traffic&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="470" x="60" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="E_MGMT_USRV01" edge="1" parent="1" source="MGMT_NET" style="endArrow=classic;html=1;rounded=0;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=1.2;fontStyle=0;startArrow=classic;startFill=1;endFill=1;fontFamily=Times New Roman;fontSize=12;" target="USRV01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_MGMT_USRV02" edge="1" parent="1" source="MGMT_NET" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=1.2;fontStyle=0;fontFamily=Times New Roman;fontSize=12;" target="USRV02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_MGMT_NAS" edge="1" parent="1" source="MGMT_NET" style="endArrow=classic;html=1;rounded=0;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=1.2;fontStyle=0;startArrow=classic;startFill=1;endFill=1;fontFamily=Times New Roman;fontSize=12;" target="NAS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_USRV01_BR0" edge="1" parent="1" source="USRV01_NIC" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;strokeWidth=1.2;fontStyle=0;startArrow=classic;startFill=1;endFill=1;fontFamily=Times New Roman;fontSize=12;" target="BR0_NET">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_USRV02_BR0" edge="1" parent="1" source="USRV02_NIC" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.781;entryY=0.016;entryDx=0;entryDy=0;strokeWidth=1.2;fontStyle=0;startArrow=classic;startFill=1;endFill=1;entryPerimeter=0;fontFamily=Times New Roman;fontSize=12;" target="BR0_NET">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_NAS_READ" edge="1" parent="1" source="NAS" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=3 3;fontFamily=Times New Roman;fontSize=12;fontStyle=0;edgeStyle=orthogonalEdgeStyle;curved=1;" target="USRV01" value="PCAP read">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="195" />
+              <mxPoint x="560" y="90" />
+              <mxPoint x="225" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

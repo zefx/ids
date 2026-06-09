@@ -1,0 +1,50 @@
+2026-04-05 18:40:55,663 INFO Loading /data/cicids_zeek/ml_dataset_temporal.parquet
+2026-04-05 18:40:58,378 INFO Loaded 30,810,176 rows
+2026-04-05 18:40:58,378 INFO Temporal features detected: ['conn_rate', 'unique_dst_ports', 'mean_duration', 'std_duration', 'bytes_per_sec']
+2026-04-05 18:41:22,265 INFO Classes: ['BENIGN', 'Bot', 'DDOS-HOIC', 'DoS-GoldenEye', 'DoS-Hulk', 'DoS-SlowHTTPTest', 'DoS-Slowloris', 'FTP-BruteForce', 'SSH-Bruteforce']
+2026-04-05 18:41:22,353 INFO   BENIGN                         27,459,938 (89.13%)
+2026-04-05 18:41:22,353 INFO   Bot                                48,007 (0.16%)
+2026-04-05 18:41:22,353 INFO   DDOS-HOIC                       1,074,408 (3.49%)
+2026-04-05 18:41:22,353 INFO   DoS-GoldenEye                      28,661 (0.09%)
+2026-04-05 18:41:22,353 INFO   DoS-Hulk                        1,803,685 (5.85%)
+2026-04-05 18:41:22,353 INFO   DoS-SlowHTTPTest                  105,550 (0.34%)
+2026-04-05 18:41:22,353 INFO   DoS-Slowloris                       6,979 (0.02%)
+2026-04-05 18:41:22,353 INFO   FTP-BruteForce                    190,300 (0.62%)
+2026-04-05 18:41:22,354 INFO   SSH-Bruteforce                     92,648 (0.30%)
+2026-04-05 18:41:35,199 INFO Train: 24,648,140  Test: 6,162,036
+2026-04-05 18:41:37,612 INFO Sample weights computed (inverse frequency)
+2026-04-05 18:41:37,738 INFO Training XGBoost (n_estimators=200, max_depth=8)...
+/home/dan/.local/lib/python3.12/site-packages/xgboost/callback.py:385: UserWarning: [18:41:44] WARNING: /__w/xgboost/xgboost/src/learner.cc:782: 
+Parameters: { "use_label_encoder" } are not used.
+
+  self.starting_round = model.num_boosted_rounds()
+[0]	validation_0-mlogloss:1.87156
+[50]	validation_0-mlogloss:0.02070
+[100]	validation_0-mlogloss:0.00936
+[150]	validation_0-mlogloss:0.00802
+[199]	validation_0-mlogloss:0.00724
+2026-04-05 18:56:40,967 INFO Done in 903.2s  (best iteration: 199)
+2026-04-05 18:56:57,821 INFO 
+                  precision    recall  f1-score   support
+
+          BENIGN     1.0000    0.9980    0.9990   5491988
+             Bot     0.5084    0.9990    0.6738      9601
+       DDOS-HOIC     0.9954    1.0000    0.9977    214882
+   DoS-GoldenEye     0.9797    1.0000    0.9897      5732
+        DoS-Hulk     1.0000    1.0000    1.0000    360737
+DoS-SlowHTTPTest     0.9978    0.9986    0.9982     21110
+   DoS-Slowloris     0.9979    1.0000    0.9989      1396
+  FTP-BruteForce     0.9838    0.9988    0.9913     38060
+  SSH-Bruteforce     0.9913    0.9998    0.9955     18530
+
+        accuracy                         0.9982   6162036
+       macro avg     0.9393    0.9994    0.9605   6162036
+    weighted avg     0.9989    0.9982    0.9984   6162036
+
+2026-04-05 18:56:59,185 INFO Weighted F1: 0.998420  Macro F1: 0.960460
+2026-04-05 18:57:00,526 INFO Metrics → /data/cicids_zeek/models/temporal/metrics_xgb.json
+2026-04-05 18:57:00,587 INFO Model   → /data/cicids_zeek/models/temporal/xgb_baseline.json
+2026-04-05 18:57:00,587 INFO Encoder → /data/cicids_zeek/models/temporal/label_encoder_xgb.joblib
+2026-04-05 18:57:01,336 INFO Confusion matrix → /data/cicids_zeek/models/temporal/confusion_matrix_xgb.png
+2026-04-05 18:57:01,508 INFO Feature importance → /data/cicids_zeek/models/temporal/feature_importance_xgb.png
+2026-04-05 18:57:01,509 INFO === XGBoost done ===

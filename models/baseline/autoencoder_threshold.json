@@ -1,0 +1,26 @@
+{
+  "threshold": 0.43046605587005615,
+  "target_fpr": 0.01,
+  "p95": 0.11753189563751221,
+  "p99": 0.43046605587005615,
+  "p999": 1.5273789167404175,
+  "val_mean": 0.031795796006917953,
+  "val_std": 0.11293461918830872,
+  "attack_mean": 0.026821104809641838,
+  "attack_std": 0.04413832724094391,
+  "n_features": 12,
+  "features": [
+    "duration",
+    "orig_bytes",
+    "resp_bytes",
+    "orig_pkts",
+    "resp_pkts",
+    "orig_ip_bytes",
+    "resp_ip_bytes",
+    "proto",
+    "service",
+    "conn_state",
+    "history",
+    "id.resp_p"
+  ]
+}

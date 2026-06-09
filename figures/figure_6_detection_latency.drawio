@@ -1,0 +1,163 @@
+<mxfile host="Electron" agent="manual">
+  <diagram name="Detection-latency" id="latency-1">
+    <mxGraphModel dx="710" dy="498" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="780" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TIMELINE_AXIS" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.2;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="380" as="sourcePoint" />
+            <mxPoint x="730" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T_LABEL" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Time after first attack packet, sec" vertex="1">
+          <mxGeometry height="20" width="200" x="540" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_0" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="0" vertex="1">
+          <mxGeometry height="14" width="20" x="92" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_1" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="1" vertex="1">
+          <mxGeometry height="14" width="20" x="192" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_2" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="2" vertex="1">
+          <mxGeometry height="14" width="20" x="292" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_3" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="3" vertex="1">
+          <mxGeometry height="14" width="20" x="392" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_4" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="4" vertex="1">
+          <mxGeometry height="14" width="20" x="492" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_5" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="5" vertex="1">
+          <mxGeometry height="14" width="20" x="592" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="TICK_6" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="6" vertex="1">
+          <mxGeometry height="14" width="20" x="692" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="V_T0" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="376" as="sourcePoint" />
+            <mxPoint x="100" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T1" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="376" as="sourcePoint" />
+            <mxPoint x="200" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T2" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="376" as="sourcePoint" />
+            <mxPoint x="300" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T3" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="376" as="sourcePoint" />
+            <mxPoint x="400" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T4" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="376" as="sourcePoint" />
+            <mxPoint x="500" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T5" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="376" as="sourcePoint" />
+            <mxPoint x="600" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V_T6" edge="1" parent="1" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="376" as="sourcePoint" />
+            <mxPoint x="700" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANCHOR_T0" edge="1" parent="1" style="endArrow=none;html=1;strokeWidth=1.5;dashed=1;dashPattern=4 4;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="60" as="sourcePoint" />
+            <mxPoint x="100" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANCHOR_T0_LABEL" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;b&gt;First attack packet&lt;/b&gt;&lt;br&gt;t = 0" vertex="1">
+          <mxGeometry height="30" width="120" x="40" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ANCHOR_ALERT" edge="1" parent="1" style="endArrow=none;html=1;strokeWidth=1.5;dashed=1;dashPattern=4 4;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="60" as="sourcePoint" />
+            <mxPoint x="540" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANCHOR_ALERT_LABEL" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;b&gt;First alert&lt;/b&gt;&lt;br&gt;t ≈ 4–5 s" vertex="1">
+          <mxGeometry height="30" width="120" x="480" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="P1_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Zeek connection tracking" vertex="1">
+          <mxGeometry height="30" width="170" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="P1_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillStyle=auto;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="20" width="200" x="100" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="P1_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;wait until first connection closes (FIN/RST), 1–3 s for typical HTTP&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="500" x="105" y="113" as="geometry" />
+        </mxCell>
+        <mxCell id="P2_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Zeek LogWriter buffer" vertex="1">
+          <mxGeometry height="30" width="170" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="P2_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillStyle=cross-hatch;strokeColor=default;align=center;verticalAlign=middle;fontColor=default;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="300" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="P2_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;~ 100 ms&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="80" x="315" y="153" as="geometry" />
+        </mxCell>
+        <mxCell id="P3_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="zeek-kafka batch produce" vertex="1">
+          <mxGeometry height="30" width="170" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="P3_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillColor=#999999;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="310" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="P3_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;linger.ms = 100, batch.num.messages = 1000&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="270" x="325" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="P4_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Kafka broker" vertex="1">
+          <mxGeometry height="30" width="170" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="P4_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillColor=#999999;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="320" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="P4_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;replication + consumer poll&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="200" x="335" y="233" as="geometry" />
+        </mxCell>
+        <mxCell id="P5_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Spark micro-batch trigger" vertex="1">
+          <mxGeometry height="30" width="170" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="P5_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillColor=#CCCCCC;fillStyle=auto;" value="" vertex="1">
+          <mxGeometry height="20" width="100" x="330" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="P5_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;processingTime = 1 s&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="160" x="435" y="273" as="geometry" />
+        </mxCell>
+        <mxCell id="P6_LABEL" parent="1" style="text;html=1;align=right;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="Inference + alert dedup" vertex="1">
+          <mxGeometry height="30" width="170" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="P6_BAR" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fillColor=#CCCCCC;fillStyle=auto;" value="" vertex="1">
+          <mxGeometry height="20" width="50" x="430" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="P6_NOTE" parent="1" style="text;html=1;align=left;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;span&gt;~ 350–500 ms per 10k-flow batch&lt;/span&gt;" vertex="1">
+          <mxGeometry height="14" width="220" x="485" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="TOTAL_BRACKET" edge="1" parent="1" style="endArrow=classic;html=1;startArrow=classic;startFill=1;endFill=1;strokeWidth=1.2;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;fontColor=default;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="430" as="sourcePoint" />
+            <mxPoint x="540" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TOTAL_LABEL" parent="1" style="text;html=1;align=center;fontFamily=Times New Roman;fontSize=12;fontStyle=0;labelBackgroundColor=none;" value="&lt;b&gt;Time-to-first-detection: 3–5 s&lt;/b&gt; for typical short-lived connections (HTTP-based DoS, bruteforce).&lt;br&gt;&lt;span&gt;For slow attacks (Slowloris, SlowHTTPTest) ML layer waits for connection close — up to tcp_inactivity_timeout (5 min default);&lt;br&gt;rule engine still triggers on the first qualifying conn.log record.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="660" x="60" y="445" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

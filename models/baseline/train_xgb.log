@@ -1,0 +1,49 @@
+2026-04-05 19:33:39,114 INFO Loading /data/cicids_zeek/ml_dataset.parquet
+2026-04-05 19:33:40,494 INFO Loaded 30,810,176 rows
+2026-04-05 19:34:02,090 INFO Classes: ['BENIGN', 'Bot', 'DDOS-HOIC', 'DoS-GoldenEye', 'DoS-Hulk', 'DoS-SlowHTTPTest', 'DoS-Slowloris', 'FTP-BruteForce', 'SSH-Bruteforce']
+2026-04-05 19:34:02,192 INFO   BENIGN                         27,459,938 (89.13%)
+2026-04-05 19:34:02,192 INFO   Bot                                48,007 (0.16%)
+2026-04-05 19:34:02,192 INFO   DDOS-HOIC                       1,074,408 (3.49%)
+2026-04-05 19:34:02,192 INFO   DoS-GoldenEye                      28,661 (0.09%)
+2026-04-05 19:34:02,192 INFO   DoS-Hulk                        1,803,685 (5.85%)
+2026-04-05 19:34:02,192 INFO   DoS-SlowHTTPTest                  105,550 (0.34%)
+2026-04-05 19:34:02,192 INFO   DoS-Slowloris                       6,979 (0.02%)
+2026-04-05 19:34:02,192 INFO   FTP-BruteForce                    190,300 (0.62%)
+2026-04-05 19:34:02,192 INFO   SSH-Bruteforce                     92,648 (0.30%)
+2026-04-05 19:34:13,597 INFO Train: 24,648,140  Test: 6,162,036
+2026-04-05 19:34:16,131 INFO Sample weights computed (inverse frequency)
+2026-04-05 19:34:16,144 INFO Training XGBoost (n_estimators=200, max_depth=8)...
+/home/dan/.local/lib/python3.12/site-packages/xgboost/callback.py:385: UserWarning: [19:34:20] WARNING: /__w/xgboost/xgboost/src/learner.cc:782: 
+Parameters: { "use_label_encoder" } are not used.
+
+  self.starting_round = model.num_boosted_rounds()
+[0]	validation_0-mlogloss:1.87552
+[50]	validation_0-mlogloss:0.03596
+[100]	validation_0-mlogloss:0.02619
+[150]	validation_0-mlogloss:0.02581
+[199]	validation_0-mlogloss:0.02579
+2026-04-05 19:48:27,389 INFO Done in 851.2s  (best iteration: 197)
+2026-04-05 19:48:43,901 INFO 
+                  precision    recall  f1-score   support
+
+          BENIGN     1.0000    0.9959    0.9980   5491988
+             Bot     0.3360    0.9999    0.5030      9601
+       DDOS-HOIC     0.9924    1.0000    0.9962    214882
+   DoS-GoldenEye     0.8952    0.9944    0.9422      5732
+        DoS-Hulk     1.0000    0.9997    0.9999    360737
+DoS-SlowHTTPTest     0.6759    0.5311    0.5948     21110
+   DoS-Slowloris     0.8523    1.0000    0.9202      1396
+  FTP-BruteForce     0.7583    0.8609    0.8064     38060
+  SSH-Bruteforce     0.9830    0.9996    0.9912     18530
+
+        accuracy                         0.9939   6162036
+       macro avg     0.8326    0.9313    0.8613   6162036
+    weighted avg     0.9959    0.9939    0.9946   6162036
+
+2026-04-05 19:48:45,308 INFO Weighted F1: 0.994585  Macro F1: 0.861312
+2026-04-05 19:48:46,706 INFO Metrics → /data/cicids_zeek/models/baseline/metrics_xgb.json
+2026-04-05 19:48:46,752 INFO Model   → /data/cicids_zeek/models/baseline/xgb_baseline.json
+2026-04-05 19:48:46,752 INFO Encoder → /data/cicids_zeek/models/baseline/label_encoder_xgb.joblib
+2026-04-05 19:48:47,529 INFO Confusion matrix → /data/cicids_zeek/models/baseline/confusion_matrix_xgb.png
+2026-04-05 19:48:47,679 INFO Feature importance → /data/cicids_zeek/models/baseline/feature_importance_xgb.png
+2026-04-05 19:48:47,679 INFO === XGBoost done ===

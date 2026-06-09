@@ -1,0 +1,45 @@
+2026-04-05 19:48:49,244 INFO Loading /data/cicids_zeek/ml_dataset.parquet
+2026-04-05 19:48:50,651 INFO Loaded 30,810,176 rows
+2026-04-05 19:49:12,135 INFO Classes: ['BENIGN', 'Bot', 'DDOS-HOIC', 'DoS-GoldenEye', 'DoS-Hulk', 'DoS-SlowHTTPTest', 'DoS-Slowloris', 'FTP-BruteForce', 'SSH-Bruteforce']
+2026-04-05 19:49:12,237 INFO   BENIGN                         27,459,938 (89.13%)
+2026-04-05 19:49:12,237 INFO   Bot                                48,007 (0.16%)
+2026-04-05 19:49:12,237 INFO   DDOS-HOIC                       1,074,408 (3.49%)
+2026-04-05 19:49:12,237 INFO   DoS-GoldenEye                      28,661 (0.09%)
+2026-04-05 19:49:12,237 INFO   DoS-Hulk                        1,803,685 (5.85%)
+2026-04-05 19:49:12,237 INFO   DoS-SlowHTTPTest                  105,550 (0.34%)
+2026-04-05 19:49:12,237 INFO   DoS-Slowloris                       6,979 (0.02%)
+2026-04-05 19:49:12,237 INFO   FTP-BruteForce                    190,300 (0.62%)
+2026-04-05 19:49:12,237 INFO   SSH-Bruteforce                     92,648 (0.30%)
+2026-04-05 19:49:23,933 INFO Train: 24,648,140  Test: 6,162,036
+2026-04-05 19:49:23,933 INFO Training RF (n_estimators=100, max_depth=20)...
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  18 tasks      | elapsed:  2.9min
+[Parallel(n_jobs=-1)]: Done 100 out of 100 | elapsed:  9.6min finished
+2026-04-05 19:59:07,661 INFO Done in 583.7s
+[Parallel(n_jobs=16)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=16)]: Done  18 tasks      | elapsed:    1.9s
+[Parallel(n_jobs=16)]: Done 100 out of 100 | elapsed:    7.0s finished
+2026-04-05 19:59:16,268 INFO 
+                  precision    recall  f1-score   support
+
+          BENIGN     1.0000    0.9960    0.9980   5491988
+             Bot     0.3364    0.9983    0.5032      9601
+       DDOS-HOIC     0.9927    1.0000    0.9963    214882
+   DoS-GoldenEye     0.9002    0.9946    0.9450      5732
+        DoS-Hulk     1.0000    0.9998    0.9999    360737
+DoS-SlowHTTPTest     0.7142    0.5196    0.6015     21110
+   DoS-Slowloris     0.9361    0.9964    0.9653      1396
+  FTP-BruteForce     0.7592    0.8865    0.8179     38060
+  SSH-Bruteforce     0.9832    0.9991    0.9911     18530
+
+        accuracy                         0.9941   6162036
+       macro avg     0.8469    0.9323    0.8687   6162036
+    weighted avg     0.9961    0.9941    0.9947   6162036
+
+2026-04-05 19:59:17,620 INFO Weighted F1: 0.994720  Macro F1: 0.868698
+2026-04-05 19:59:18,953 INFO Metrics → /data/cicids_zeek/models/baseline/metrics_rf.json
+2026-04-05 19:59:19,013 INFO Model    → /data/cicids_zeek/models/baseline/rf_baseline.joblib
+2026-04-05 19:59:19,013 INFO Encoder  → /data/cicids_zeek/models/baseline/label_encoder_rf.joblib
+2026-04-05 19:59:19,770 INFO Confusion matrix → /data/cicids_zeek/models/baseline/confusion_matrix_rf.png
+2026-04-05 19:59:19,946 INFO Feature importance → /data/cicids_zeek/models/baseline/feature_importance_rf.png
+2026-04-05 19:59:19,946 INFO === RF done ===

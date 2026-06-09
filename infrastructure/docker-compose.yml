@@ -1,0 +1,125 @@
+# All-in-one IDS deployment: Zeek → Kafka → Spark consumer
+#
+# Quick start (pre-built images):
+#   1. Copy .env.example to .env and set INTERFACE
+#   2. Place trained models in ./models/
+#   3. docker compose up -d
+#   4. docker compose logs -f consumer
+#
+# Build from source (optional):
+#   docker compose up -d --build
+#
+# Architecture:
+#   [NIC] -> Zeek (--network=host) -> Kafka (port 9092) -> Spark consumer -> stdout alerts
+#
+# Management:
+#   ./ids-ctl.sh logs              # watch alerts
+#   ./ids-ctl.sh restart           # restart consumer
+#   ./ids-ctl.sh reset-topic       # clear Kafka + restart consumer
+
+services:
+
+  # ── Kafka (KRaft, no Zookeeper) ────────────────────────────────────────────
+  kafka:
+    image: apache/kafka:latest
+    container_name: ids-kafka
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Moscow
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_LOG_RETENTION_HOURS: 24
+      KAFKA_LOG_SEGMENT_BYTES: 536870912
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  # ── Kafka UI (optional, for debugging) ─────────────────────────────────────
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: ids-kafka-ui
+    restart: unless-stopped
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_CLUSTERS_0_NAME: zeek-ids
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    ports:
+      - "8080:8080"
+    profiles:
+      - debug
+
+  # ── Zeek + zeek-kafka plugin ───────────────────────────────────────────────
+  zeek:
+    image: ghcr.io/${GHCR_USER:-zefx}/hse-thesis-zeek:${TAG:-latest}
+    build:
+      context: ..
+      dockerfile: infrastructure/zeek/Dockerfile
+    container_name: ids-zeek
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    environment:
+      TZ: Europe/Moscow
+      INTERFACE: ${INTERFACE:-eth0}
+      KAFKA_BROKER: 127.0.0.1:9092
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  # ── Spark consumer (XGBoost temporal + Rule engine) ────────────────────────
+  consumer:
+    image: ghcr.io/${GHCR_USER:-zefx}/hse-thesis-consumer:${TAG:-latest}
+    build:
+      context: ..
+      dockerfile: infrastructure/consumer/Dockerfile
+    container_name: ids-consumer
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      TZ: Europe/Moscow
+      KAFKA_BROKER: 127.0.0.1:9092
+      KAFKA_TOPIC: zeek-conn
+      MODEL_DIR: /models/temporal
+      CHECKPOINT_DIR: /tmp/spark-ids-checkpoint
+    # Models are baked into the image — no volume mount needed.
+    depends_on:
+      kafka:
+        condition: service_healthy
+    command:
+      - "--broker"
+      - "127.0.0.1:9092"
+      - "--topic"
+      - "zeek-conn"
+      - "--model-dir"
+      - "/models/temporal"
+      - "--enable-temporal"
+      - "--enable-rules"
+      - "--trigger"
+      - "1 second"
+
+volumes:
+  kafka_data:
+    driver: local

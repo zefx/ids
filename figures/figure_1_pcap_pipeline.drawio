@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="manual">
+  <diagram name="PCAP-pipeline" id="pcap-1">
+    <mxGraphModel dx="1288" dy="903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PCAP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#666666;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;arcSize=3;fontStyle=0" value="&lt;b&gt;CSE-CIC-IDS2018 PCAP&lt;/b&gt;&lt;br&gt;&lt;span&gt;400+ GB, 10 capture days&lt;/span&gt;&lt;br&gt;&lt;span&gt;NAS storage&lt;/span&gt;" vertex="1">
+          <mxGeometry height="65" width="220" x="240" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZEEK" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#444444;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;fontStyle=0" value="&lt;b&gt;Zeek 7.0.4 processing&lt;/b&gt;&lt;br&gt;&lt;span&gt;process_cicids.sh&lt;/span&gt;&lt;br&gt;editcap fix&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;for truncated UCAP&lt;/span&gt;" vertex="1">
+          <mxGeometry height="75" width="260" x="220" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="CONN_PER_DAY" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#888888;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=8 8;fontStyle=0" value="&lt;b&gt;per-day conn.log&lt;/b&gt;&lt;br&gt;&lt;span&gt;Wed 14.02, Thu 15.02, Fri 16.02,&lt;/span&gt;&lt;br&gt;&lt;span&gt;Wed 21.02, Fri 02.03 (5 active days)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="65" width="260" x="220" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="LABEL" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#444444;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;fontStyle=0" value="&lt;b&gt;Schedule-based flow labeling&lt;/b&gt;&lt;br&gt;&lt;span&gt;label_zeek_v2.py + label_all.sh&lt;/span&gt;&lt;br&gt;timezone AST (UTC-4); attacker IPs from UNB attack schedule table" vertex="1">
+          <mxGeometry height="75" width="300" x="200" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="LABELED_CSV" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#888888;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=8 8;fontStyle=0" value="&lt;b&gt;combined/labeled.csv&lt;/b&gt;&lt;br&gt;&lt;span&gt;30.8M flows · 9 classes · raw Zeek strings&lt;/span&gt;" vertex="1">
+          <mxGeometry height="55" width="260" x="220" y="448" as="geometry" />
+        </mxCell>
+        <mxCell id="MAKE" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#444444;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;fontStyle=0" value="&lt;b&gt;Dataset assembly&lt;/b&gt;&lt;br&gt;&lt;span&gt;make_dataset.py&lt;/span&gt;&lt;br&gt;categorical -&amp;gt; str ; numerical -&amp;gt; log1p" vertex="1">
+          <mxGeometry height="75" width="290" x="20" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="BUILD_TEMPORAL" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#444444;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;fontStyle=0" value="&lt;b&gt;Temporal feature computation&lt;/b&gt;&lt;br&gt;&lt;span&gt;build_temporal_dataset.py&lt;/span&gt;&lt;br&gt;Sliding window 60 s per src_ip&lt;br&gt;5 features: conn_rate, unique_dst_ports,&lt;br&gt;mean_duration, std_duration, bytes_per_sec" vertex="1">
+          <mxGeometry height="100" width="300" x="370" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="DATASET_BASELINE" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#888888;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=8 8;fontStyle=0" value="&lt;b&gt;ml_dataset.parquet&lt;/b&gt;&lt;br&gt;&lt;span&gt;30.8M x 12 features&lt;/span&gt;" vertex="1">
+          <mxGeometry height="55" width="250" x="40" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="DATASET_TEMPORAL" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#888888;fontFamily=Times New Roman;fontSize=12;align=center;verticalAlign=middle;arcSize=3;dashed=1;dashPattern=8 8;fontStyle=0" value="&lt;b&gt;ml_dataset_temporal.parquet&lt;/b&gt;&lt;br&gt;&lt;span&gt;30.8M x 17 features&lt;/span&gt;" vertex="1">
+          <mxGeometry height="55" width="260" x="390" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="TRAIN" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#444444;fontFamily=Times New Roman;fontSize=13;align=center;verticalAlign=middle;fontStyle=0" value="&lt;b&gt;Model training&lt;/b&gt;&lt;br&gt;&lt;span&gt;train_xgb.py ; train_rf.py ; train_lgbm.py&lt;/span&gt;&lt;br&gt;80/20 stratified split ; inverse-frequency class weighting" vertex="1">
+          <mxGeometry height="75" width="380" x="150" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="E_PCAP_ZEEK" edge="1" parent="1" source="PCAP" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="ZEEK" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_ZEEK_CONN" edge="1" parent="1" source="ZEEK" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="CONN_PER_DAY" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_CONN_LABEL" edge="1" parent="1" source="CONN_PER_DAY" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="LABEL" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_LABEL_CSV" edge="1" parent="1" source="LABEL" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="LABELED_CSV" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_CSV_MAKE" edge="1" parent="1" source="LABELED_CSV" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="MAKE" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_CSV_TEMP" edge="1" parent="1" source="LABELED_CSV" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="BUILD_TEMPORAL" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_MAKE_DSB" edge="1" parent="1" source="MAKE" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="DATASET_BASELINE" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_TEMP_DST" edge="1" parent="1" source="BUILD_TEMPORAL" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="DATASET_TEMPORAL" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_DSB_TRAIN" edge="1" parent="1" source="DATASET_BASELINE" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="TRAIN" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E_DST_TRAIN" edge="1" parent="1" source="DATASET_TEMPORAL" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=11;strokeColor=#333333;fontStyle=0" target="TRAIN" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

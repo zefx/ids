@@ -1,0 +1,30 @@
+{
+  "model": "XGBoost temporal",
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratified": true
+  },
+  "auc_per_class": {
+    "BENIGN": 0.9999952998238277,
+    "Bot": 0.999923828484513,
+    "DDOS-HOIC": 0.9999998672617767,
+    "DoS-GoldenEye": 0.9999999230473522,
+    "DoS-Hulk": 1.0,
+    "DoS-SlowHTTPTest": 0.9999999578431581,
+    "DoS-Slowloris": 1.0,
+    "FTP-BruteForce": 0.9999921083678229,
+    "SSH-Bruteforce": 0.9999998276735447
+  },
+  "ap_per_class": {
+    "BENIGN": 0.9999994267446949,
+    "Bot": 0.9599306551856613,
+    "DDOS-HOIC": 0.9999963248672424,
+    "DoS-GoldenEye": 0.9998723535940157,
+    "DoS-Hulk": 1.0,
+    "DoS-SlowHTTPTest": 0.9999876859122785,
+    "DoS-Slowloris": 1.0,
+    "FTP-BruteForce": 0.9986348068052748,
+    "SSH-Bruteforce": 0.9999423073059841
+  }
+}

@@ -1,0 +1,46 @@
+2026-04-05 19:59:21,452 INFO Loading /data/cicids_zeek/ml_dataset.parquet
+2026-04-05 19:59:22,841 INFO Loaded 30,810,176 rows
+2026-04-05 19:59:44,780 INFO Classes: ['BENIGN', 'Bot', 'DDOS-HOIC', 'DoS-GoldenEye', 'DoS-Hulk', 'DoS-SlowHTTPTest', 'DoS-Slowloris', 'FTP-BruteForce', 'SSH-Bruteforce']
+2026-04-05 19:59:44,882 INFO   BENIGN                         27,459,938 (89.13%)
+2026-04-05 19:59:44,882 INFO   Bot                                48,007 (0.16%)
+2026-04-05 19:59:44,882 INFO   DDOS-HOIC                       1,074,408 (3.49%)
+2026-04-05 19:59:44,882 INFO   DoS-GoldenEye                      28,661 (0.09%)
+2026-04-05 19:59:44,882 INFO   DoS-Hulk                        1,803,685 (5.85%)
+2026-04-05 19:59:44,882 INFO   DoS-SlowHTTPTest                  105,550 (0.34%)
+2026-04-05 19:59:44,882 INFO   DoS-Slowloris                       6,979 (0.02%)
+2026-04-05 19:59:44,882 INFO   FTP-BruteForce                    190,300 (0.62%)
+2026-04-05 19:59:44,882 INFO   SSH-Bruteforce                     92,648 (0.30%)
+2026-04-05 19:59:56,253 INFO Train: 24,648,140  Test: 6,162,036
+2026-04-05 19:59:56,281 INFO Training LightGBM (n_estimators=500, num_leaves=63)...
+Training until validation scores don't improve for 30 rounds
+[50]	valid_0's multi_logloss: 0.0267324
+[100]	valid_0's multi_logloss: 0.0261614
+Early stopping, best iteration is:
+[95]	valid_0's multi_logloss: 0.0261609
+2026-04-05 20:05:28,041 INFO Done in 331.8s  (best iteration: 95)
+/home/dan/.local/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-04-05 20:05:56,657 INFO 
+                  precision    recall  f1-score   support
+
+          BENIGN     1.0000    0.9960    0.9980   5491988
+             Bot     0.3361    0.9999    0.5031      9601
+       DDOS-HOIC     0.9926    1.0000    0.9963    214882
+   DoS-GoldenEye     0.9003    0.9944    0.9450      5732
+        DoS-Hulk     1.0000    0.9997    0.9999    360737
+DoS-SlowHTTPTest     0.5839    0.5521    0.5675     21110
+   DoS-Slowloris     0.9245    1.0000    0.9608      1396
+  FTP-BruteForce     0.7503    0.7853    0.7674     38060
+  SSH-Bruteforce     0.9830    0.9995    0.9912     18530
+
+        accuracy                         0.9935   6162036
+       macro avg     0.8301    0.9252    0.8588   6162036
+    weighted avg     0.9956    0.9935    0.9943   6162036
+
+2026-04-05 20:05:57,997 INFO Weighted F1: 0.994282  Macro F1: 0.858787
+2026-04-05 20:05:59,301 INFO Metrics → /data/cicids_zeek/models/baseline/metrics_lgbm.json
+2026-04-05 20:05:59,311 INFO Model   → /data/cicids_zeek/models/baseline/lgbm_baseline.txt
+2026-04-05 20:05:59,311 INFO Encoder → /data/cicids_zeek/models/baseline/label_encoder_lgbm.joblib
+2026-04-05 20:06:00,083 INFO Confusion matrix → /data/cicids_zeek/models/baseline/confusion_matrix_lgbm.png
+2026-04-05 20:06:00,208 INFO Feature importance → /data/cicids_zeek/models/baseline/feature_importance_lgbm.png
+2026-04-05 20:06:00,208 INFO === LightGBM done ===

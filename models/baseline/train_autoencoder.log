@@ -1,0 +1,47 @@
+2026-04-07 19:45:04,129 INFO Loading /data/cicids_zeek/ml_dataset.parquet
+2026-04-07 19:45:05,502 INFO Loaded 30,810,176 rows
+2026-04-07 19:45:23,142 INFO Features (12): ['duration', 'orig_bytes', 'resp_bytes', 'orig_pkts', 'resp_pkts', 'orig_ip_bytes', 'resp_ip_bytes', 'proto', 'service', 'conn_state', 'history', 'id.resp_p']
+2026-04-07 19:45:23,877 INFO BENIGN: 27,459,938 | Attacks: 3,350,238
+2026-04-07 19:45:26,583 INFO Train (benign): 21,967,950 | Val (benign): 5,491,988
+2026-04-07 19:45:26,584 INFO Attack samples for evaluation: 3,350,238
+2026-04-07 19:45:29,552 INFO Scaler saved
+2026-04-07 19:45:30,433 INFO Device: cpu
+2026-04-07 19:45:31,023 INFO Model params: 288
+2026-04-07 19:45:31,088 INFO Training for 50 epochs, batch_size=4096
+2026-04-07 19:46:55,383 INFO Epoch   1/50  loss=0.096369
+2026-04-07 19:52:31,451 INFO Epoch   5/50  loss=0.035285
+2026-04-07 19:59:30,818 INFO Epoch  10/50  loss=0.033406
+2026-04-07 20:06:31,141 INFO Epoch  15/50  loss=0.032800
+2026-04-07 20:13:33,407 INFO Epoch  20/50  loss=0.032628
+2026-04-07 20:20:32,689 INFO Epoch  25/50  loss=0.032524
+2026-04-07 20:27:31,917 INFO Epoch  30/50  loss=0.032023
+2026-04-07 20:34:31,024 INFO Epoch  35/50  loss=0.031912
+2026-04-07 20:41:31,208 INFO Epoch  40/50  loss=0.031882
+2026-04-07 20:48:32,237 INFO Epoch  45/50  loss=0.031868
+2026-04-07 20:55:31,028 INFO Epoch  50/50  loss=0.031863
+2026-04-07 20:55:31,028 INFO Training completed in 4199.9s
+2026-04-07 20:55:31,030 INFO Model saved to /data/cicids_zeek/models/baseline/autoencoder_model.pth
+2026-04-07 20:55:31,030 WARNING ONNX export failed (non-critical): No module named 'onnxscript'
+2026-04-07 20:55:31,030 INFO Computing reconstruction errors...
+2026-04-07 20:55:31,328 INFO Thresholds: p95=0.117532  p99=0.430466  p999=1.527379
+2026-04-07 20:55:31,328 INFO Selected threshold (FPR=0.01): 0.430466
+2026-04-07 20:55:31,333 INFO ── Detection Performance (threshold=0.430466) ──
+2026-04-07 20:55:31,334 INFO   BENIGN val: 54,918/5,491,988 flagged (1.00% FPR)
+2026-04-07 20:55:31,334 INFO   Attacks:    440/3,350,238 detected (0.01% TPR)
+2026-04-07 20:55:33,206 INFO   Per-class detection rates:
+2026-04-07 20:55:33,212 INFO     Bot                                 396/  48,007 (  0.82%)
+2026-04-07 20:55:33,222 INFO     DDOS-HOIC                             0/1,074,408 (  0.00%)
+2026-04-07 20:55:33,229 INFO     DoS-GoldenEye                        44/  28,661 (  0.15%)
+2026-04-07 20:55:33,241 INFO     DoS-Hulk                              0/1,803,685 (  0.00%)
+2026-04-07 20:55:33,248 INFO     DoS-SlowHTTPTest                      0/ 105,550 (  0.00%)
+2026-04-07 20:55:33,254 INFO     DoS-Slowloris                         0/   6,979 (  0.00%)
+2026-04-07 20:55:33,262 INFO     FTP-BruteForce                        0/ 190,300 (  0.00%)
+2026-04-07 20:55:33,269 INFO     SSH-Bruteforce                        0/  92,648 (  0.00%)
+2026-04-07 20:55:33,269 INFO ──────────────────────────────────────────────────
+2026-04-07 20:55:33,269 INFO Files saved to /data/cicids_zeek/models/baseline:
+2026-04-07 20:55:33,269 INFO   autoencoder_model.pth       — PyTorch weights
+2026-04-07 20:55:33,269 INFO   autoencoder_scaler.joblib   — StandardScaler
+2026-04-07 20:55:33,269 INFO   autoencoder_threshold.json  — detection thresholds
+2026-04-07 20:55:33,269 INFO   train_autoencoder.log       — full training log
+2026-04-07 20:55:33,270 INFO Train time: 4199.9s | Features: 12
+2026-04-07 20:55:33,270 INFO FPR: 1.00% | TPR: 0.01%
